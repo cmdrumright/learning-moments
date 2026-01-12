@@ -28,6 +28,9 @@ export const FilterBar = ({setFilterTopic, setSearchTerm}) => {
                 )
             })}
             </select>
+            <input type="text" onChange={(event) => {
+                setSearchTerm(event.target.value)
+            }}></input>
         </div>
     )
 }
