@@ -1,5 +1,6 @@
 import {Outlet, Route, Routes} from "react-router-dom"
-import {AllPosts} from "../components/AllPosts"
+import {NavBar} from "../components/nav/NavBar"
+import {AllPosts} from "../components/posts/AllPosts"
 
 export const ApplicationViews = () => {
     return (
@@ -8,6 +9,7 @@ export const ApplicationViews = () => {
                 path="/"
                 element={
                     <>
+                        <NavBar />
                         <Outlet />
                     </>
                 }

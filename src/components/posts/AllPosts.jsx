@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react"
-import {getAllPosts} from "../services/posts.jsx"
-import {FilterBar} from "./FilterBar.jsx"
+import {getAllPosts} from "../../services/posts.jsx"
+import {FilterBar} from "../FilterBar.jsx"
 import "./Posts.css"
 
 export const AllPosts = () => {
