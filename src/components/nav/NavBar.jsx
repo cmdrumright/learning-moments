@@ -3,10 +3,27 @@ import "./NavBar.css"
 
 export const NavBar = () => {
     return (
-        <div className="navbar">
-            <Link to="/">
-                All Posts
-            </Link>
-        </div>
+        <ul className="navbar">
+            <li className="navbar-item">
+                <Link to="/">
+                    All Posts
+                </Link>
+            </li>
+            {localStorage.getItem("learning_user") ? (
+              <li className="navbar-item">
+                <Link
+                  to=""
+                  onClick={() => {
+                    localStorage.removeItem("learning_user")
+                    navigate("/login", { replace: true })
+                  }}
+                >
+                  Logout
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
+        </ul>
     )
 }

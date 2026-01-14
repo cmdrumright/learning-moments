@@ -1,3 +1,9 @@
 .navbar {
     margin: 1rem;
+    list-style: none;
+}
+
+.navbar-item {
+    display: inline;
+    margin: 1rem;
 }
