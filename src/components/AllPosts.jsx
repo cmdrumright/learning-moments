@@ -13,14 +13,13 @@ export const AllPosts = () => {
     useEffect(() => {
         getAllPosts().then((postArray) => {
             setAllPosts(postArray)
-            console.log(postArray)
         })
     }, [])
 
     useEffect(() => {
         const foundPosts = allPosts.filter((post) => filterTopic ? post.topic.id === filterTopic : true)
         setFilteredPosts(foundPosts)
-    }, [filterTopic])
+    }, [filterTopic, allPosts])
 
     useEffect(() => {
         if (searchTerm === "") {
