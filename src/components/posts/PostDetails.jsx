@@ -1,14 +1,23 @@
 import {useParams} from "react-router-dom"
-import {getPostById} from "../../services/posts.jsx"
+import {getPostById, addLike} from "../../services/posts.jsx"
 import {useEffect, useState} from "react"
 
-export const PostDetails = () => {
+export const PostDetails = ({currentUser}) => {
     const [currentPost, setCurrentPost] = useState({})
     const {postId} = useParams()
 
     useEffect(() => {
         getPostById(postId).then(setCurrentPost)
-    }, [])
+    }, [postId])
+    
+    const likePost = () => {
+        const likeObj = {
+            userId: currentUser.id,
+            postId: currentPost.id
+        }
+        addLike(likeObj).then(() =>{
+        })
+    }
 
     //  Then the title, author, topic, date, body, and number of likes should display for the post.
     return(
@@ -20,6 +29,14 @@ export const PostDetails = () => {
             <p>{currentPost.body}</p>
             <footer>
                 {currentPost.postLikes?.length} likes
+                {currentPost.user?.id === currentUser.id 
+                        || currentPost.postLikes?.find((like) => like.userId === currentUser.id) ? "" :
+                        <button className="like-button"
+                            onClick={likePost}
+                        >
+                            Like Post
+                        </button>
+                }
             </footer>
         </div>
     )
