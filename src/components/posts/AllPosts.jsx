@@ -38,9 +38,8 @@ export const AllPosts = () => {
                 return (
                     <div className="post-item" key={post.id}>
                         <Link to={`posts/${post.id}`}>
-                            <h2>Title</h2>
+                            <p className="post-title">{post.title}</p>
                         </Link>
-                        <p>{post.title}</p>
                         <h2>Topic</h2>
                         <p>{post.topic.name}</p>
                         <h2>Likes</h2>
