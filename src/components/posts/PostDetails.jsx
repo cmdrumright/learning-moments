@@ -1,10 +1,11 @@
-import {useParams} from "react-router-dom"
+import {useNavigate, useParams} from "react-router-dom"
 import {getPostById, addLike} from "../../services/posts.jsx"
 import {useEffect, useState} from "react"
 
 export const PostDetails = ({currentUser}) => {
     const [currentPost, setCurrentPost] = useState({})
     const {postId} = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         getPostById(postId).then(setCurrentPost)
@@ -16,6 +17,7 @@ export const PostDetails = ({currentUser}) => {
             postId: currentPost.id
         }
         addLike(likeObj).then(() =>{
+            navigate("/favorites")
         })
     }
 
@@ -30,7 +32,15 @@ export const PostDetails = ({currentUser}) => {
             <footer>
                 {currentPost.postLikes?.length} likes
                 {currentPost.user?.id === currentUser.id 
-                        || currentPost.postLikes?.find((like) => like.userId === currentUser.id) ? "" :
+                    ? 
+                        <button className="edit-button"
+                            onClick={() => {navigate("edit")}}
+                        >
+                            Edit Post
+                        </button>
+                    :
+                        currentPost.postLikes?.find((like) => like.userId === currentUser.id)
+                        ? "" :
                         <button className="like-button"
                             onClick={likePost}
                         >
