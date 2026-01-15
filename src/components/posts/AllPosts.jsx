@@ -2,6 +2,7 @@ import {useEffect, useState} from "react"
 import {getAllPosts} from "../../services/posts.jsx"
 import {FilterBar} from "../FilterBar.jsx"
 import "./Posts.css"
+import {Link} from "react-router-dom"
 
 export const AllPosts = () => {
     const [allPosts, setAllPosts] = useState([])
@@ -36,7 +37,9 @@ export const AllPosts = () => {
             {searchedPosts.map((post) => {
                 return (
                     <div className="post-item" key={post.id}>
-                        <h2>Title</h2>
+                        <Link to={`posts/${post.id}`}>
+                            <h2>Title</h2>
+                        </Link>
                         <p>{post.title}</p>
                         <h2>Topic</h2>
                         <p>{post.topic.name}</p>
