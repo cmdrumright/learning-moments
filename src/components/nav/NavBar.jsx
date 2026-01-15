@@ -14,6 +14,11 @@ export const NavBar = () => {
                     New Post
                 </Link>
             </li>
+            <li className="navbar-item">
+                <Link to="/myposts">
+                    My Posts
+                </Link>
+            </li>
             {localStorage.getItem("learning_user") ? (
               <li className="navbar-item">
                 <Link
