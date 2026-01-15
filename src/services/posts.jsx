@@ -4,3 +4,10 @@ export const getAllPosts = () => {
        res.json()
     )    
 }
+
+export const getPostById = (postId) => {
+    return fetch(`http://localhost:8088/posts/${postId}?_expand=user&_expand=topic&_embed=postLikes`)
+    .then((res) => 
+       res.json()
+    )    
+}
